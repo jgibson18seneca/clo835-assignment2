@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jg-db-pod
+spec:
+  containers:
+    - name: jg-db-container
+      image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/jg-asg2-ecr:jg_db-v1
+      ports:
+        - containerPort: 80
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "wordpass"
+        - name: DATABASE
+          value: "employees"
+        - name: DBNAME
+          value: "employees"
+        - name: DBUSER
+          value: "root"
+        - name: DBPWD
+          value: "wordpass"
+        - name: DBHOST
+          value: "172.17.0.2"
+        - name: DBPORT
+          value: "3306"
+#   imagePullSecrets:
+#     - name: ecr-registry-key
