@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: jg-app-rs
+  labels:
+    app: employees
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+        app: employees
+    spec:
+      containers:
+      - name: jg-app-pod
+        image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/jg-asg2-ecr:jg_app-v1
+        ports:
+        - containerPort: 8080
+        env:
+          - name: DBUSER
+            value: "root"
+          - name: DATABASE
+            value: "employees"
+          - name: DBPWD
+            value: "wordpass"
+          - name: APP_COLOR
+            value: "blue"
+          - name: DBHOST
+            value: "10.244.0.5"
+          - name: DBPORT
+            value: "3306"
+
+#   imagePullSecrets:
+#     - name: ecr-registry-key
