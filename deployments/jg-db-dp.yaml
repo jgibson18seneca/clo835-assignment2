@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jg-db-dp
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: jg-db-pod
+        image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/jg-asg2-ecr:jg_db-v1
+        ports:
+        - containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "wordpass"
+          
+#   imagePullSecrets:
+#   - name: ecr-registry-key
