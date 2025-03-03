@@ -4,7 +4,7 @@ metadata:
   name: jg-db-pod
 spec:
   containers:
-    - name: mysql
+    - name: jg-db-pod
       image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/jg-asg2-ecr:jg_db-v1
       ports:
         - containerPort: 3306

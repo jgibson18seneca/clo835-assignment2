@@ -4,7 +4,7 @@ metadata:
   name: jg-app-pod
 spec:
   containers:
-    - name: app
+    - name: jg-app-pod
       image: 134986800938.dkr.ecr.us-east-1.amazonaws.com/jg-asg2-ecr:jg_app-v1
       ports:
         - containerPort: 8080
